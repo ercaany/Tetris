@@ -3,18 +3,23 @@ using System.Collections;
 
 public class Shapes : MonoBehaviour {
 	float lastFall = 0f;
-	public float timeToFall = 0.3f;
+	public float timeToFall = 2f;
+
+
 	// Use this for initialization
 	void Start () {
 		if(!isValidGridPos()){
+			PlayerPrefs.SetInt ("LastScore", ScoreManager.score);
 			Destroy (gameObject);
-			print ("game over bitch");
+			Application.LoadLevel ("GameOver");
 		}
 	}
-	
+
+
+
 	// Update is called once per frame
 	void Update () {
-		; //time since last the time it fell
+		
 		// Move Left
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
 			//change the position
